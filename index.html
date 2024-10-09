@@ -11,10 +11,30 @@
 <title>JavaScript, jQuery та плагіни</title>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
   <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.js"></script>
+
+<style>
+  .ui-accordion-header{
+    cursor: pointer;
+  }
+</style>
+
   <script>
-  $( function() {
-    $( "#accordion" ).accordion();
-  } );
+   $(function() {
+      
+      $("#accordion").accordion({
+        event: false,  
+        collapsible: true,
+        active: false  
+      });
+      
+      
+      $("#accordion .ui-accordion-header").hover(function() {
+        var index = $(this).index() / 2;  
+        $("#accordion").accordion("option", "active", index);
+      }, function() {
+        $("#accordion").accordion("option", "active", false);  
+      });
+    });
   </script>
 
 <script>
@@ -247,7 +267,40 @@
 			}
 		}
 	})
-</script>	
+</script>
+
+
+<style>
+  #progressbar {
+    height: 30px; /* Adjust the height as needed */
+  }
+
+  /* Custom styles for the progress bar */
+  .ui-progressbar {
+    background: #f0f0f0; /* Background color of the progress bar */
+  }
+  
+  .ui-progressbar .ui-progressbar-value {
+    background: #4caf50; /* Change this color to your desired color */
+  }
+</style>
+
+
+
+<div id="progressbar"></div>
+
+
+
+
+
+<script>
+  $(function() {
+    $("#progressbar").progressbar({
+      value: 50,
+      
+    });
+  });
+</script>
 
 </body>
 </html>
